@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://MenuStart.gd" type="Script" id=1]
+[ext_resource path="res://halaman depan.png" type="Texture" id=2]
+[ext_resource path="res://PETARUNG (1).png" type="Texture" id=3]
+[ext_resource path="res://Airy-melancholic-synth-pad-104-bpm (online-audio-converter.com).wav" type="AudioStream" id=4]
+
+[node name="MenuStart" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tittle" type="Label" parent="."]
+margin_left = 118.0
+margin_top = 57.7076
+margin_right = 201.0
+margin_bottom = 71.7076
+text = "PETAROENG"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="halaman depan" type="Sprite" parent="."]
+position = Vector2( 158.654, 95.8458 )
+rotation = 0.00349066
+scale = Vector2( 0.16, 0.16 )
+texture = ExtResource( 2 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.292358
+margin_bottom = -0.292358
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 118.0
+margin_top = 68.0
+margin_right = 201.0
+margin_bottom = 112.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PETARUNG" type="Sprite" parent="CenterContainer/VBoxContainer"]
+position = Vector2( 39.9969, -5.18582 )
+rotation = -2.89719e-10
+scale = Vector2( 0.12559, 0.135034 )
+texture = ExtResource( 3 )
+
+[node name="Start" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_right = 83.0
+margin_bottom = 20.0
+text = "Start Game"
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 83.0
+margin_bottom = 44.0
+text = "Quit Game"
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Background" type="AudioStreamPlayer2D" parent="Node2D"]
+stream = ExtResource( 4 )
+autoplay = true
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Start" to="CenterContainer/VBoxContainer/Start" method="_on_Start_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

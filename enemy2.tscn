@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Revisi/diam dan serang viking.png" type="Texture" id=1]
+[ext_resource path="res://enemy2.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12.172, 32.4408 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 900, 0, 300, 300 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 300, 300 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 300, 0, 300, 300 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 600, 0, 300, 300 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "diam",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "pukul",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 9.09391
+height = 20.3934
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 36.0274, 27.6797 )
+
+[node name="enemy2" type="KinematicBody2D"]
+script = ExtResource( 5 )
+
+[node name="Hit" type="Area2D" parent="." groups=[
+"Kapak",
+]]
+position = Vector2( 1.53456, 0.90897 )
+scale = Vector2( 0.516387, 0.529114 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit"]
+position = Vector2( -32.6671, 5.98661 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 15.4818, -6.87092 )
+scale = Vector2( 0.516387, 0.529114 )
+frames = SubResource( 6 )
+animation = "pukul"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 3.05861, 4.40069 )
+shape = SubResource( 7 )
+
+[node name="Area" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+position = Vector2( -25.3129, -5.23636 )
+shape = SubResource( 8 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="body_entered" from="Area" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_Area2D_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/intern.wav-f7304af3336db73ba7208cfa021327dc.sample"
+
+[deps]
+
+source_file="res://intern.wav"
+dest_files=[ "res://.import/intern.wav-f7304af3336db73ba7208cfa021327dc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0
